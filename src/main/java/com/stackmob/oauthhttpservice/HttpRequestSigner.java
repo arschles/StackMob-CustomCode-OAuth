@@ -1,7 +1,7 @@
-//goes in src/main/java/com/stackmob/oauthhttpservice
 package com.stackmob.oauthhttpservice;
 
 import org.scribe.builder.ServiceBuilder;
+import org.scribe.exceptions.OAuthException;
 import org.scribe.model.OAuthRequest;
 import org.scribe.model.Response;
 import org.scribe.model.Token;
@@ -27,7 +27,7 @@ class HttpRequestSigner {
 	private static final String userAgentName = "Custom Code HttpService";
 	
 	//pass the API key, secret, and version here for the stackmob app that you want to call
-	public HttpRequestSigner(String apiKey, String apiSecret, String appName, int apiVersionNum) {
+	public HttpRequestSigner(String apiKey, String apiSecret, String appName, int apiVersionNum) throws OAuthException {
 		this.apiKey = apiKey;
 		this.apiSecret = apiSecret;
 		this.appName = appName;
