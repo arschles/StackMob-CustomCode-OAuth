@@ -32,7 +32,7 @@ class HttpRequestSigner {
 		this.apiSecret = apiSecret;
 		this.appName = appName;
 		this.apiVersionNum = apiVersionNum;
-		this.oAuthService = new ServiceBuilder().provider(HttpRequestSignerAPI.class).apiKey(apiKey).apiSecret(apiSecret).build();
+		this.oAuthService = new ServiceBuilder().provider(HttpRequestSignerAPI.class).apiKey(this.apiKey).apiSecret(this.apiSecret).build();
 	}
 	
 	private String getUserAgentString() {
@@ -83,7 +83,7 @@ class HttpRequestSigner {
 		oAuthService.signRequest(new Token("", ""), oReq);
 		return oReq;
 	}
-		
+
 	public HttpRequestWithoutBody sign(HttpRequestWithoutBody unsigned) throws MalformedURLException {
 		OAuthRequest req = createAndSignOAuthRequest(unsigned);
 		String url = unsigned.getUrl().toString();
